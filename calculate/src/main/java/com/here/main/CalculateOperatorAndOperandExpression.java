@@ -25,7 +25,7 @@ public class CalculateOperatorAndOperandExpression {
 	 * @return void
 	 */
 	public static void main(String[] args) {
-		Stack<String> stack = new Stack<>();
+		Stack<String> stack = new Stack<String>();
 		String argStr = null;
 		if (args.length != 0) {
 			argStr = args[0];
