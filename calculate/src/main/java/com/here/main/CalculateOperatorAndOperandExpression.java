@@ -1,27 +1,29 @@
 package com.here.main;
 
-import java.util.EmptyStackException;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * The <code>CalculateOperatorAndOperandExpression</code> class 
- * can provide functionality to provide basic arithmetic operation
- * on the positive and negative numbers
- * 
+ * <code>CalculateOperatorAndOperandExpression</code> class can provide
+ * functionality to provide basic arithmetic operation for both positive and
+ * negative integers
  */
 public class CalculateOperatorAndOperandExpression {
 
+	/**
+	 * Regex constant which used for valid number and operator
+	 */
 	private static final Pattern VALID_OPERATOR_REGEX = Pattern.compile("[\\/\\+\\-\\*]");
 	private static final Pattern VALID_NUMBER_REGEX = Pattern.compile("[0-9]");
 	private static final Pattern VALID_INPUT_REGEX = Pattern.compile("[0-9\\(\\)\\+\\-\\*\\./\\\"]");
 
-	/* 
-	 * Tester method to test the functionality it takes args[0] as input from 
-	 * commandline argument
-	 * 
-	 * */
+	/**
+	 * main(args) to test the functionality it takes args[0] as input from
+	 *
+	 * @param args[0] as input
+	 * @return void
+	 */
 	public static void main(String[] args) {
 		Stack<String> stack = new Stack<>();
 		String argStr = null;
@@ -38,7 +40,7 @@ public class CalculateOperatorAndOperandExpression {
 			}
 		}
 
-		Integer result = 0;
+		Integer result = Integer.MIN_VALUE;
 
 		if (isInputValid(arr)) {
 			result = resultCalculation(stack);
@@ -50,14 +52,14 @@ public class CalculateOperatorAndOperandExpression {
 		}
 	}
 
-	 /**
+	/**
      * resultCalculation(stack) method Calculate result based on the num1 and num2 with operator
      *
      * @param stack values as input
      * @return  integer result
      */
 	public static int resultCalculation(Stack<String> stack) {
-		Integer result = 0;
+		Integer result = Integer.MIN_VALUE;
 		while (!stack.isEmpty()) {
 			String num1 = stack.pop();
 			if (isNumber(num1) && isNumber(stack.peek())) {
@@ -80,34 +82,36 @@ public class CalculateOperatorAndOperandExpression {
 		return result;
 	}
 
-	 /**
-     * isOperator(operator) is verifies is basic operator or not
-     *
-     * @param   operator   the operator to validate whether is it operator -,/,*,+.
-     * @return  boolean true/false.
-     */
+	/**
+	 * isOperator(operator) is verifies is basic operator or not
+	 *
+	 * @param operator the operator to validate whether is it operator -,/,*,+.
+	 * @return boolean true/false.
+	 */
 	public static boolean isOperator(String operator) {
 		Matcher matcher = VALID_OPERATOR_REGEX.matcher(operator);
 		return matcher.find();
 	}
 
-	 /**
-     * isNumber(numStr) validates number or not
-     *
-     * @param   numStr validates is given String is number [0-9].
-     * @return  boolean true/false.
-     */
+	/**
+	 * isNumber(numStr) validates number or not
+	 *
+	 * @param numStr validates is given String is number [0-9].
+	 * @return boolean true/false.
+	 */
 	public static boolean isNumber(String numStr) {
 		Matcher matcher = VALID_NUMBER_REGEX.matcher(numStr);
 		return matcher.find();
 	}
 
-	 /**
-     * isInputValid(str) before starting the process it validates whether input has valid input
-     *
-     * @param   array of str[] validates is given array contains only number [0-9] and [-,+,/,*].
-     * @return  boolean true/false.
-     */
+	/**
+	 * isInputValid(str) before starting the process it validates whether input has
+	 * valid input
+	 *
+	 * @param array of str[] validates is given array contains only number [0-9] and
+	 *              [-,+,/,*].
+	 * @return boolean true/false.
+	 */
 	public static boolean isInputValid(String[] str) {
 		for (String s : str) {
 			if (!s.isEmpty()) {
@@ -119,12 +123,13 @@ public class CalculateOperatorAndOperandExpression {
 		return true;
 	}
 
-	 /**
-     * calculate(num1,num2,operator) this method calculate the result based on num1,num2 and operator
-     *
-     * @param   num1,num2 and operator. Ex : num1=2,num2=3, operator=+, result=5
-     * @return  return integer result(positive/negative).
-     */
+	/**
+	 * calculate(num1,num2,operator) this method calculate the result based on
+	 * num1,num2 and operator
+	 *
+	 * @param num1,num2 and operator. Ex : num1=2,num2=3, operator=+, result=5
+	 * @return return integer result(positive/negative).
+	 */
 	public static int calculate(int num1, int num2, String operator) {
 		Integer result = Integer.MIN_VALUE;
 		switch (operator) {
