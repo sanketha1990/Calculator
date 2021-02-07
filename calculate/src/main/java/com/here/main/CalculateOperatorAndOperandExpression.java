@@ -65,8 +65,8 @@ public class CalculateOperatorAndOperandExpression {
 			if (isNumber(num1) && isNumber(stack.peek())) {
 				String num2 = stack.pop();
 				if (isOperator(stack.peek())) {
-					String op = stack.pop();
-					result = calculate(Integer.parseInt(num1), Integer.parseInt(num2), op);
+					String operator = stack.pop();
+					result = calculate(Integer.parseInt(num1), Integer.parseInt(num2), operator);
 					if (!stack.isEmpty()) {
 						stack.push(result.toString());
 					}
